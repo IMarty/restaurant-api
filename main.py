@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import FastAPI, HTTPException, status, Header, Response
+from fastapi import FastAPI, HTTPException, status, Header
 from pydantic import BaseModel
 
 app = FastAPI()
