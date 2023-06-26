@@ -53,7 +53,7 @@ def add_restaurant(body:Restaurant):
     else : 
         raise HTTPException(
             status.HTTP_401_UNAUTHORIZED,
-            detail="Go away, Bitch"
+            detail="No empty name, thanks"
         )  
 
 @app.delete("/restaurants", status_code=204)
