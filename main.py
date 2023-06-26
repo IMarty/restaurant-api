@@ -1,4 +1,3 @@
-from typing_extensions import Annotated
 from fastapi import FastAPI, HTTPException, status, Header
 from pydantic import BaseModel
 
@@ -45,9 +44,7 @@ def add_restaurant(body:Restaurant):
     return 
 
 @app.delete("/restaurants", status_code=204)
-def restore_restaurants(
-    secret: Annotated[str | None, Header(convert_underscores=False)] = None
-):
+def restore_restaurants(secret:str):
     if(secret=="cap4lab"):
         restaurant_list= [
             {"name": "Mac Donalds", "likes": 10, "currentlyOpen": True},
