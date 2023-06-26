@@ -47,8 +47,14 @@ def get_restaurant(item_id: int):
 
 @app.post("/restaurants", status_code=201)
 def add_restaurant(body:Restaurant):
-    restaurant_list.append(body.dict())
-    return 
+    if(body.name !=""):
+        restaurant_list.append(body.dict())
+        return
+    else : 
+        raise HTTPException(
+            status.HTTP_401_UNAUTHORIZED,
+            detail="Go away, Bitch"
+        )  
 
 @app.delete("/restaurants", status_code=204)
 def restore_restaurants(secret:str):
