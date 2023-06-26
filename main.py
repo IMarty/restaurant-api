@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, status, Header
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+global restaurant_list
 
 app = FastAPI()
 app.add_middleware(
@@ -59,7 +60,8 @@ def add_restaurant(body:Restaurant):
 @app.delete("/restaurants", status_code=204)
 def restore_restaurants(secret:str):
     if(secret=="cap4lab"):
-        restaurant_list= [
+        restaurant_list.clear()
+        restaurant_list.extend([
             {"name": "Mac Donalds", "likes": 10, "currentlyOpen": True},
             {"name": "Burger King", "likes": 15, "currentlyOpen": True},
             {"name": "Pizza Hut", "likes": 8, "currentlyOpen": False},
@@ -70,10 +72,10 @@ def restore_restaurants(secret:str):
             {"name": "Wendy's", "likes": 7, "currentlyOpen": False},
             {"name": "Starbucks", "likes": 25, "currentlyOpen": True},
             {"name": "Dunkin' Donuts", "likes": 6, "currentlyOpen": False}
-        ]
+        ])
         return
-    else : 
+    else:
         raise HTTPException(
             status.HTTP_403_FORBIDDEN,
-            detail="Go away, Bitch"
-        ) 
+            detail="Not the good password. Bad Student."
+        )  
