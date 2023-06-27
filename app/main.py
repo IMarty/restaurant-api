@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, status, Header
+from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 global restaurant_list
